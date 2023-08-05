@@ -39,8 +39,10 @@ sudo ./pipewire-installer.sh
 6. Run the following command to confirm pipewire has been installed successfully:
    ```bash
    pactlinfo
-```
-   
+   ```
+
+
+
 ## Troubleshooting Bluetooth Connectivity
 
 If you are experiencing issues with Bluetooth functionality on your system, such as devices not connecting or Bluetooth not working at all, you can try the following solution to unblock the Bluetooth interface.
