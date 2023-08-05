@@ -34,5 +34,39 @@ chmod +x pipewire-installer.sh
 sudo ./pipewire-installer.sh
 ```
 
+5. Reboot your linux system
+
+6. Run the following command to confirm pipewire has been installed successfully:
+   ```bash
+   pactlinfo
+```
+   
+## Troubleshooting Bluetooth Connectivity
+
+If you are experiencing issues with Bluetooth functionality on your system, such as devices not connecting or Bluetooth not working at all, you can try the following solution to unblock the Bluetooth interface.
+
+### Solution:
+
+Open a terminal or command prompt on your system.
+
+To unblock Bluetooth, run the following command:
+
+```
+rfkill unblock bluetooth
+```
+
+This command will attempt to unblock the Bluetooth interface and should resolve most common Bluetooth connectivity problems.
+
+After running the command, try using Bluetooth again to check if the issue has been resolved.
+
+### Additional Notes:
+
+- The `rfkill` command is used to manage wireless devices on Linux-based systems. The `unblock` option allows you to enable a disabled wireless device.
+
+- If the issue persists even after running the command, you may need to investigate further to identify the underlying cause of the problem.
+
+- Make sure your system has Bluetooth capabilities and the necessary drivers are installed and up to date.
+
+
 
 
