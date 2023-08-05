@@ -12,11 +12,27 @@ This script automates the installation process of pipewire on Ubuntu and its der
 
 ## Installation
 
-To use this script, follow these steps:
+To use the `curl` method to download the script from the provided GitHub link, using these steps:
 
 1. Open a terminal on your Ubuntu-based system.
-2. Download the script using `curl` or `wget`:
 
-Using `curl`:
+2. Download the script using `curl`:
+
 ```bash
-curl -o install_programs.sh https://raw.githubusercontent.com/your_username_here/linux-program-installer/main/install_programs.sh
+curl -o pipewire-installer.sh https://raw.githubusercontent.com/vincent-chege/Install-PipeWire-for-Ubuntu-and-Its-Derivatives/main/pipewire-installer.sh
+```
+
+3. Make the script executable:
+
+```bash
+chmod +x pipewire-installer.sh
+```
+
+4. Run the script with administrative privileges:
+
+```bash
+sudo ./pipewire-installer.sh
+```
+
+
+
