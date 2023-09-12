@@ -31,7 +31,7 @@ chmod +x pipewire-installer.sh
 4. Run the script with administrative privileges:
 
 ```bash
-sudo ./pipewire-installer.sh
+./pipewire-installer.sh
 ```
 
 5. Reboot your linux system
