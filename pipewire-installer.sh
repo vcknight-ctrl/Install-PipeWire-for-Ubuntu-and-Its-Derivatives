@@ -1,26 +1,37 @@
 #!/bin/bash
 
-# Add Pipewire repository
+# Add the Pipewire PPA repository
 sudo add-apt-repository ppa:pipewire-debian/pipewire-upstream
 
-# Update package lists
+# Update the package list
 sudo apt update
 
-# Install required packages
-sudo apt install -y pipewire libldacbt-{abr,enc}2 libspa-0.2-bluetooth pipewire-audio-client-libraries wireplumber pipewire-pulse
+# Install Pipewire and related packages
+sudo apt install -y pipewire libspa-0.2-bluetooth pipewire-audio-client-libraries
 
-# Remove PulseAudio (optional)
-#sudo apt remove -y pulseaudio
-
-# Config Files
-sudo cp /usr/share/doc/pipewire/examples/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d/
+# Reload user-level systemd units
+systemctl --user daemon-reload
 
 # Disable and mask PulseAudio services
 systemctl --user --now disable pulseaudio.service pulseaudio.socket
 systemctl --user mask pulseaudio
 
-# Enable and start Pipewire and WirePlumber services
-systemctl --user --now enable pipewire pipewire-pulse wireplumber
-systemctl --user --now enable wireplumber.service
+# Enable Pipewire media session service
+systemctl --user --now enable pipewire-media-session.service
 
-echo "Installation and configuration completed."
+echo "Pipewire installation completed. You may need to restart your session for changes to take effect."
+
+# Check if Pipewire is working, and if not, try to restart it
+if systemctl --user is-active --quiet pipewire; then
+    echo "Pipewire is running."
+else
+    echo "Pipewire is not running. Trying to restart..."
+    systemctl --user restart pipewire
+fi
+
+# Rollback steps (unmask PulseAudio)
+echo "If you want to rollback to PulseAudio:"
+echo "Run the following commands:"
+echo "systemctl --user unmask pulseaudio"
+echo "systemctl --user --now enable pulseaudio.service pulseaudio.socket"
+
